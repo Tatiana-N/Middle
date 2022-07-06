@@ -38,6 +38,11 @@ public class HbmRun {
 			Query queryIdModify = session.createQuery("from Candidate s where s.id = :fId");
 			queryIdModify.setParameter("fId", 1);
 			System.out.println(queryIdModify.uniqueResult());
+			
+			session.save(Candidate.of("Vasya", "6", 500.0));
+			Query queryName = session.createQuery("from Candidate s where s.name = :fName");
+			queryName.setParameter("fName", "Vasya");
+			System.out.println(queryName.list());
 			session.getTransaction().commit();
 			/*
 			2. UPDATE
